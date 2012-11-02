@@ -41,6 +41,7 @@
 #include "PoseDetectionCapabilityWrapper.h"
 #include "SkeletonCapabilityWrapper.h"
 #include "ProductionNodeWrapper.h"
+//#include "NodeInfoWrapper.h"
 #include "RecorderWrapper.h"
 #include "PlayerWrapper.h"
 #include "GeneratorWrapper.h"
@@ -549,6 +550,10 @@ BOOST_PYTHON_MODULE(openni) {
 
             .def("init", &Context_Init_wrapped, Context_Init_DOC)
             .def("init_from_xml_file", &Context_InitFromXmlFile_wrapped)
+            .def("init_from_xml_file_by_choice", &Context_InitFromXmlFileByChoice_wrapped)
+            .def("init_from_xml_file_by_device_id", &Context_InitFromXmlFileByDeviceID_wrapped)
+            .def("init_by_device_id", &Context_InitByDeviceID_wrapped)
+            .def("get_device_count", &Context_GetDeviceCount_wrapped)
             .def("shutdown", &Context_Shutdown_wrapped, Context_Shutdown_DOC)
             .def("wait_any_update_all", &Context_WaitAnyUpdateAll_wrapped, Context_WaitAnyUpdateAll_DOC)
             .def("wait_and_update_all", &Context_WaitAndUpdateAll_wrapped, Context_WaitAndUpdateAll_DOC)
@@ -558,10 +563,11 @@ BOOST_PYTHON_MODULE(openni) {
             .def("stop_generating_all", &Context_StopGeneratingAll_wrapped, Context_StopGeneratingAll_DOC)
             .def("find_existing_node", &Context_FindExistingNode_wrapped)
             .def("open_file_recording", &Context_OpenFileRecording_wrapped, Context_OpenFileRecording_DOC)
-
             .add_property("valid", &Context_IsValid, Context_valid_DOC)
 
             ;
+	
+//	            .def("find_existing_node", &Context_EnumerateExistingNodes_wrapped)	
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -576,6 +582,14 @@ BOOST_PYTHON_MODULE(openni) {
             .add_property("context", &ProductionNode_GetContext_wrapped, ProductionNode_context_DOC)
 
             ;//TODO: add optional params
+	
+    ////////////////////////////////////////////////////////////////////////////
+    // class NodeInfo
+	/*
+    class_< xn::NodeInfo > ("NodeInfo", NodeInfo_DOC)
+	.add_property("name", &NodeInfo_GetInstanceName_wrapped, NodeInfo_name_DOC)			
+	;
+	*/
 
 
     ////////////////////////////////////////////////////////////////////////////

@@ -28,7 +28,11 @@
 
 void Context_Init_wrapped(xn::Context& self);
 void Context_InitFromXmlFile_wrapped(xn::Context& self, const std::string& initializationFilename);
+void Context_InitFromXmlFileByChoice_wrapped(xn::Context& self, const std::string& initializationFilename);
+void Context_InitFromXmlFileByDeviceID_wrapped(xn::Context& self, const std::string& initializationFilename, int deviceNumber);
+int Context_GetDeviceCount_wrapped(xn::Context& self);
 
+void Context_InitByDeviceID_wrapped(xn::Context& self, int deviceNumber);
 void Context_WaitAnyUpdateAll_wrapped(xn::Context& self);
 void Context_WaitAndUpdateAll_wrapped(xn::Context& self);
 void Context_WaitNoneUpdateAll_wrapped(xn::Context& self);
